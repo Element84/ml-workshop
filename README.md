@@ -1,10 +1,7 @@
 # Setup
 
-- Launch one EC2 instance for each participant
-    - AMI: ???
-    - Instance type: `p3.2xlarge`
-    - Volume size: ???
-    - Key pair: `ml-workshop`
+- Launch one EC2 instance for each participant and perform the below steps on each
+    - Launch template: `MLWorkshopLaunchTemplate`
 - Clone repo and checkout branch
   ```sh
   git clone https://github.com/Element84/ml-workshop.git
