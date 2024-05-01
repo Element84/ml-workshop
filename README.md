@@ -30,6 +30,7 @@
   ```
   ```sh
   cd ~ && mkdir ssl && cd ssl && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem && cd -
+  cd ml-workshop/notebooks
   jupyter lab --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key
   ```
 - Ask each participant to run the following in their local terminal:
