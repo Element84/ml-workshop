@@ -24,6 +24,7 @@
   mamba env create -f env.yml
   mamba activate ml-workshop
   ```
+- Run `aws configure` and set credentials and region (`us-east-1`).
 - Start JupyterLab server
   ```sh
   jupyter lab password
