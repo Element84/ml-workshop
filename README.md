@@ -24,7 +24,15 @@
   mamba env create -f env.yml
   mamba activate ml-workshop
   ```
+- Install GDAL
+  ```sh
+  mamba install -y -c conda-forge gdal=3.6.3
+  ```
 - Run `aws configure` and set credentials and region (`us-east-1`).
+- Copy over sandstorm training data
+  ```sh
+  aws s3 sync s3://ml-workshop-internal/sandstorm/data/ ~/ml-workshop/notebooks/02-sandstorm_case_study/data/training
+  ```
 - Start JupyterLab server
   ```sh
   jupyter lab password
