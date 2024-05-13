@@ -1,7 +1,37 @@
 # Setup
 
-- Launch one EC2 instance for each participant and perform the below steps on each
-    - Launch template: `MLWorkshopLaunchTemplate`
+## From pre-configured AMI
+- Launch EC2 instance from the launch template: `MLWorkshopCustomAMILaunchTemplate`
+- Fix the [slow I/O issue](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-initialize.html). Make sure `--filename=/dev/<device>` matches the device name in `lsblk`'s output. This will take 20-30 mins to complete.
+  ```sh
+  sudo apt update -y
+  sudo apt install fio -y
+  sudo fio --filename=/dev/xvda --rw=read --bs=1M --iodepth=32 --ioengine=libaio --direct=1 --name=volume-initialize
+  ```
+- Refresh branch
+  ```sh
+    cd ~/ml-workshop/
+    git fetch --all
+    git checkout external-workshop
+    git reset --hard @{u}
+  ```
+- `cd` to `~/ml-workshop/notebooks` and activate mamba environment.
+  ```sh
+    cd ~/ml-workshop/notebooks
+    mamba activate ml-workshop
+  ```
+- Start JupyterLab server
+  ```sh
+  jupyter lab --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key
+  ```
+- Ask each participant to run the following in their local terminal:
+  ```sh
+  ssh -i ~/ml-workshop.pem -N -f -L 8888:localhost:8888 ubuntu@abc.amazonaws.com
+  ```
+- Ask each participant to navigate to https://localhost:8888/ in their local browser.
+
+## From base AMI
+- Launch EC2 instance from the launch template: `MLWorkshopLaunchTemplate`
 - Clone repo and checkout branch
   ```sh
   git clone https://github.com/Element84/ml-workshop.git
