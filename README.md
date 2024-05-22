@@ -36,7 +36,7 @@
   ```sh
   git clone https://github.com/Element84/ml-workshop.git
   cd ml-workshop && \
-  git checkout internal-workshop
+  git checkout external-workshop
   ```
 - Install `mamba`
   ```sh
@@ -61,7 +61,7 @@
 - Run `aws configure` and set credentials and region (`us-east-1`).
 - Copy over sandstorm training data
   ```sh
-  aws s3 sync s3://ml-workshop-internal/sandstorm/data/ ~/ml-workshop/notebooks/02-sandstorm_case_study/data/training
+  aws s3 sync s3://ml-workshop-external/sandstorm/data/ ~/ml-workshop/notebooks/02-sandstorm_case_study/data/training
   ```
 - Start JupyterLab server
   ```sh
